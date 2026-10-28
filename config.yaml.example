@@ -1,0 +1,121 @@
+# weflow 统一配置示例
+# 复制为项目根目录下的 config.yaml。
+# 注意:真实文件包含密钥,已被 .gitignore 忽略,不要提交。
+
+default: main
+
+accounts:
+  main:
+    name: "我的主公众号"
+    app_id: "wx_your_app_id"
+    app_secret: "your_app_secret"
+    author: "作者A"
+    theme: "refined-blue"
+    image_style: "hand-drawn-blue"
+    newspic_image_style: "infographic-warm"
+    article_structure:
+    opening_hook:
+    voice: |
+      作者A，独立开发者，专注 AI 与效率工具。
+      微信公众号：示例公众号A。
+    sync_platforms: [zhihu, juejin, csdn]
+
+  tech:
+    name: "技术博客号"
+    app_id: "wx_your_second_app_id"
+    app_secret: "your_second_app_secret"
+    author: "技术团队"
+    theme: "minimal-mono"
+    image_style: "marker-lime"
+    newspic_image_style: "infographic-blue"
+    article_structure:
+    opening_hook:
+    voice: |
+      技术团队，持续输出工程实践。
+
+image_generation:
+  provider: "z_image_turbo_bailian"
+
+  # provider=openai
+  openai:
+    api_key: "sk-..."
+    base_url: "https://api.openai.com/v1"
+    image_model: "gpt-image-1"
+
+  # provider=gemini_proxy
+  gemini_proxy:
+    base_url: "https://generativelanguage.googleapis.com"
+    api_key: "AIza..."
+    image_model: "gemini-2.5-flash"
+
+  z_image:
+    base_url: "https://api-inference.modelscope.cn/"
+    api_key: "xxx"
+    image_model: "Tongyi-MAI/Z-Image-Turbo"
+
+  krea_2_turbo:
+    base_url: "https://api-inference.modelscope.cn/"
+    api_key: ""
+    image_model: "krea/Krea-2-Turbo"
+
+  qwen_image:
+    # 阿里云百炼 DashScope API（通义万相 Qwen-Image）
+    # 获取 API Key：https://help.aliyun.com/zh/model-studio/get-api-key
+    # 默认使用公共端点；如使用北京地域业务空间，base_url 改为：
+    #   https://{WorkspaceId}.cn-beijing.maas.aliyuncs.com/api/v1
+    base_url: "https://dashscope.aliyuncs.com/api/v1"
+    api_key: ""
+    image_model: "qwen-image-2.0-pro"
+    # size: "2048*2048"
+    # 反向提示词（可选，用于排除不希望出现的画面元素）
+    negative_prompt: "低分辨率，低画质，肢体畸形，手指畸形，画面过饱和，蜡像感，人脸无细节，过度光滑，画面具有AI感。构图混乱。文字模糊，扭曲。"
+
+  z_image_turbo_bailian:
+    # 阿里云百炼 DashScope API（Z-Image-Turbo 模型）
+    # 与 qwen_image 共用同一 API 端点，prompt_extend 默认关闭
+    base_url: "https://dashscope.aliyuncs.com/api/v1"
+    api_key: ""
+    image_model: "z-image-turbo"
+    # 图片尺寸，格式为 宽*高
+    # size: "1120*1440"
+
+  wan_image_bailian:
+    # 阿里云百炼 DashScope API（通义万相 Wan2.7-Image-Pro）
+    # 支持 thinking_mode 推理增强，size 可用 "2K"、"4K" 等命名规格
+    base_url: "https://dashscope.aliyuncs.com/api/v1"
+    api_key: ""
+    image_model: "wan2.7-image-pro"
+    # 图片尺寸，支持 "2K"、"4K" 或 "宽*高"
+    # size: "2K"
+
+# AI大模型提供商配置（独立 Agent 运行时）
+llm_providers:
+  default: deepseek
+  providers:
+    deepseek:
+      api_key: "sk-..."
+      base_url: "https://api.deepseek.com/v1"
+      model: "deepseek-chat"
+    openai:
+      api_key: "sk-..."
+      base_url: "https://api.openai.com/v1"
+      model: "gpt-4o"
+    zhipu:
+      api_key: "..."
+      base_url: "https://open.bigmodel.cn/api/paas/v4"
+      model: "glm-4-flash"
+    doubao:
+      api_key: "..."
+      base_url: "https://ark.cn-beijing.volces.com/api/v3"
+      model: "ep-..."
+    minimax:
+      api_key: "..."
+      base_url: "https://api.minimaxi.com/v1"
+      model: "abab6.5s-chat"
+
+# 任务产物输出目录（相对于项目根目录）
+generated_task_dir: "generated"
+
+integrations:
+  # 多平台同步: @wechatsync/cli + Chrome 扩展 MCP token
+  wechatsync_mcp_token: ""

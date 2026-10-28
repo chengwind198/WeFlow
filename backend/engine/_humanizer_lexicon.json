@@ -1,0 +1,223 @@
+{
+  "_generated": "DO NOT EDIT. Vendored from humanizer/lexicon.json by humanizer/sync.mjs. Edit the canonical file and re-run sync.",
+  "version": 1,
+  "_source_of_truth": "This is the canonical AI-tell lexicon for all writing skills in this repo. Edit terms HERE, then run `node humanizer/sync.mjs` to vendor a copy into each skill's scripts/ dir. Each consuming script reads its LOCAL vendored copy at runtime (with a hardcoded fallback so the skill still works when installed standalone).",
+  "_design_notes": [
+    "Only PLAIN TERMS live here — the layer where drift was proven (e.g. 生态/破圈/蓝图 were in wechat's vocab but missing from X's, so the same sentence passed X and failed wechat). Regex constructions (首先…其次, not-just-X-but-Y) and frequency-capped craft words (novel's 不禁/仿佛 per-3000-char caps) stay in their own engines — merging them would erase legitimate per-genre differences.",
+    "This file carries ONLY {category -> terms}. It deliberately does NOT carry severity or treatment. Each engine decides how to treat a hit (X: warn; wechat: weighted score; novel: hard exit1). Same term, different genre, different consequence — that is correct, not drift.",
+    "`surfaces` is informational: which categories are RELEVANT to each skill. Engines reference `categories[<name>]` directly and map each category to its own rule/dimension (e.g. bait -> error, vocab -> warn). Do NOT flatten a surface's categories into one list."
+  ],
+  "categories": {
+    "zh-commercial": [
+      "赋能",
+      "打造",
+      "聚焦",
+      "深度融合",
+      "生态",
+      "闭环",
+      "链路",
+      "抓手",
+      "价值链",
+      "护城河",
+      "方法论",
+      "底层逻辑",
+      "生态位",
+      "结构化思维",
+      "提升效率",
+      "助力",
+      "全链路",
+      "一站式",
+      "端到端",
+      "量变到质变",
+      "引领",
+      "颠覆",
+      "革命性",
+      "前所未有",
+      "核心竞争力",
+      "范式",
+      "新范式",
+      "降本增效",
+      "数字化转型",
+      "智能化",
+      "生态体系",
+      "产业升级",
+      "破局",
+      "出圈",
+      "破圈",
+      "沉淀",
+      "赋予",
+      "深耕",
+      "蓝图",
+      "新篇章"
+    ],
+    "zh-set-phrase": [
+      "众所周知",
+      "不可否认",
+      "毋庸置疑",
+      "综上所述",
+      "总而言之",
+      "总的来说",
+      "由此可见",
+      "不难发现",
+      "显而易见",
+      "值得一提的是",
+      "归根结底",
+      "无论如何",
+      "在当今社会",
+      "进入新时代"
+    ],
+    "zh-reader-shout": [
+      "我跟你讲",
+      "我跟你说"
+    ],
+    "zh-no-stance": [
+      "见仁见智",
+      "各有利弊",
+      "萝卜青菜各有所爱",
+      "时间会证明一切",
+      "时间会给出答案",
+      "众口难调",
+      "存在即合理"
+    ],
+    "zh-bait": [
+      "点赞关注",
+      "转发抽奖",
+      "关注我",
+      "点赞收藏",
+      "转发支持",
+      "评论区扣"
+    ],
+    "literary-hollow": [
+      "深邃",
+      "凝重",
+      "复杂的情绪",
+      "难以言喻",
+      "说不出的"
+    ],
+    "en-ai-vocab": [
+      "delve",
+      "delving",
+      "tapestry",
+      "testament",
+      "game-changer",
+      "game changer",
+      "gamechanger",
+      "underscore",
+      "underscores",
+      "harness",
+      "harnessing",
+      "illuminate",
+      "facilitate",
+      "bolster",
+      "elevate",
+      "elevates",
+      "leverage",
+      "leveraging",
+      "realm",
+      "seamless",
+      "seamlessly",
+      "supercharge",
+      "unleash",
+      "beacon",
+      "treasure trove",
+      "a myriad of",
+      "plethora",
+      "navigating the",
+      "in the realm of"
+    ],
+    "en-filler-opener": [
+      "in today's fast-paced world",
+      "in today's digital age",
+      "in today's world",
+      "ever-evolving",
+      "ever-changing",
+      "now more than ever",
+      "in the world of",
+      "when it comes to",
+      "in an era of",
+      "let's face it",
+      "picture this",
+      "imagine a world",
+      "in this day and age"
+    ],
+    "en-hedging": [
+      "it's important to note",
+      "it's worth noting",
+      "arguably",
+      "generally speaking",
+      "in many ways",
+      "to some extent",
+      "needless to say"
+    ],
+    "en-no-stance": [
+      "there are pros and cons",
+      "only time will tell",
+      "time will tell",
+      "to each their own",
+      "your mileage may vary",
+      "there's no right answer",
+      "there is no right answer",
+      "it's a double-edged sword",
+      "at the end of the day it depends"
+    ],
+    "en-bait": [
+      "like if you agree",
+      "retweet if",
+      "rt if",
+      "rt to win",
+      "comment below",
+      "comment yes",
+      "comment if you",
+      "tag a friend",
+      "tag someone",
+      "follow for more",
+      "smash that",
+      "like and subscribe",
+      "like & subscribe",
+      "drop a 🔥"
+    ]
+  },
+  "surfaces": {
+    "x": {
+      "_engine": "new-x-skill/scripts/lint.ts",
+      "uses": [
+        "zh-commercial",
+        "zh-set-phrase",
+        "zh-reader-shout",
+        "zh-no-stance",
+        "zh-bait",
+        "en-ai-vocab",
+        "en-filler-opener",
+        "en-hedging",
+        "en-no-stance",
+        "en-bait"
+      ]
+    },
+    "wechat": {
+      "_engine": "weflow/scripts/ai_score.py",
+      "uses": [
+        "zh-commercial"
+      ]
+    },
+    "novel": {
+      "_engine": "novel-writer/scripts/anti_ai_audit.py",
+      "uses": [
+        "literary-hollow"
+      ]
+    },
+    "tech-book": {
+      "_engine": "tech-book-skill (planned)",
+      "uses": [
+        "zh-commercial",
+        "zh-set-phrase"
+      ]
+    },
+    "course": {
+      "_engine": "geektime-skill/skills/create-course (planned)",
+      "uses": [
+        "zh-commercial",
+        "zh-set-phrase"
+      ]
+    }
+  }
+}

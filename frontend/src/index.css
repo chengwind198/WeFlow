@@ -1,0 +1,254 @@
+/*
+ * WeFlow公众号AI写作助手 — 全局样式
+ *
+ * 设计系统：墨韵纸白（Ink Rhyme Paper White）
+ * - 亮色模式 = 暖纸色调（米白纸面 + 墨黑文字）
+ * - 深色模式 = 墨韵纸白的深色变体（默认）
+ *
+ * Tailwind CSS v4 + shadcn/ui New York 风格
+ */
+
+@import "tailwindcss";
+
+/* ============================================================
+ * Tailwind CSS v4 主题定义
+ * ============================================================ */
+
+@theme inline {
+  /* ── 颜色 ── */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* ── 侧边栏 ── */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* ── 圆角 ── */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* ── 字体 ── */
+  --font-sans: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB",
+    -apple-system, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Cascadia Code", "SF Mono", Consolas,
+    monospace;
+  --font-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", Georgia,
+    serif;
+}
+
+/* ============================================================
+ * CSS 自定义属性（亮色 / 深色模式切换）
+ * ============================================================ */
+
+:root {
+  /* ── 墨韵纸白 · 亮色模式 ── */
+  --background: #F7F5F2;
+  --foreground: #1E1B18;
+  --card: #FFFFFF;
+  --card-foreground: #1E1B18;
+  --popover: #FFFFFF;
+  --popover-foreground: #1E1B18;
+  --primary: #2D4A8E;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F3F0EB;
+  --secondary-foreground: #1E1B18;
+  --muted: #F3F0EB;
+  --muted-foreground: #6B6560;
+  --accent: #EEF1F8;
+  --accent-foreground: #2D4A8E;
+  --destructive: #C53030;
+  --destructive-foreground: #FFFFFF;
+  --border: #E8E4DE;
+  --input: #D4CFC8;
+  --ring: #2D4A8E;
+
+  /* ── 侧边栏 ── */
+  --sidebar: #FAF9F7;
+  --sidebar-foreground: #6B6560;
+  --sidebar-primary: #2D4A8E;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #EEF1F8;
+  --sidebar-accent-foreground: #2D4A8E;
+  --sidebar-border: #E8E4DE;
+  --sidebar-ring: #2D4A8E;
+
+  /* ── 语义色（亮色）── */
+  --success: #2D7D46;
+  --success-muted: #EAF5EE;
+  --warning: #C27803;
+  --warning-muted: #FEF7EB;
+  --danger: #C53030;
+  --danger-muted: #FDEDED;
+
+  /* ── 圆角 ── */
+  --radius: 0.5rem;
+
+  /* ── 阴影 ── */
+  --shadow-surface: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-raised: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-overlay: 0 8px 24px rgba(0, 0, 0, 0.10);
+}
+
+.dark {
+  /* ── 墨韵纸白 · 深色模式（默认）── */
+  --background: #1C1D22;
+  --foreground: #D4CFC8;
+  --card: #24252A;
+  --card-foreground: #D4CFC8;
+  --popover: #24252A;
+  --popover-foreground: #D4CFC8;
+  --primary: #6B8FCF;
+  --primary-foreground: #FFFFFF;
+  --secondary: #2C2D32;
+  --secondary-foreground: #D4CFC8;
+  --muted: #2C2D32;
+  --muted-foreground: #8B857E;
+  --accent: rgba(45, 74, 142, 0.25);
+  --accent-foreground: #8BA9E0;
+  --destructive: #E55353;
+  --destructive-foreground: #FFFFFF;
+  --border: #36373C;
+  --input: #36373C;
+  --ring: #6B8FCF;
+
+  /* ── 侧边栏 ── */
+  --sidebar: #1A1B20;
+  --sidebar-foreground: #8B857E;
+  --sidebar-primary: #6B8FCF;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: rgba(45, 74, 142, 0.25);
+  --sidebar-accent-foreground: #8BA9E0;
+  --sidebar-border: #36373C;
+  --sidebar-ring: #6B8FCF;
+
+  /* ── 语义色（深色）── */
+  --success: #4CAF50;
+  --success-muted: rgba(45, 125, 70, 0.2);
+  --warning: #E6A817;
+  --warning-muted: rgba(194, 120, 3, 0.2);
+  --danger: #E55353;
+  --danger-muted: rgba(197, 48, 48, 0.2);
+
+  /* ── 阴影 ── */
+  --shadow-surface: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-raised: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-overlay: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================================
+ * 基础层样式
+ * ============================================================ */
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* ── 文章预览区字体 ── */
+  .font-article {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    line-height: 1.85;
+  }
+
+  /* ── 代码区字体 ── */
+  .font-code {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  /* ── 表单输入框基础样式 ── */
+  .input {
+    display: block;
+    width: 100%;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--input);
+    background-color: var(--background);
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    color: var(--foreground);
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .input::placeholder {
+    color: var(--muted-foreground);
+    opacity: 0.5;
+  }
+  .input:focus {
+    outline: none;
+    border-color: var(--ring);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--ring) 20%, transparent);
+  }
+
+  /* ── 尊重用户运动偏好 ── */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ============================================================
+ * 自定义滚动条
+ * ============================================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}

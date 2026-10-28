@@ -1,0 +1,27 @@
+# ============================================================
+# WeFlow公众号AI写作助手 - FastAPI 后端依赖
+# ============================================================
+
+# ── Web 框架 ──
+fastapi==0.123.5
+uvicorn[standard]==0.35.0
+
+# ── 数据验证与配置 ──
+pydantic==2.11.9
+pydantic-settings==2.9.1
+
+# ── 异步支持 ──
+httpx==0.28.1              # 异步 HTTP 客户端（替代 requests）
+aiofiles==24.1.0           # 异步文件读写
+python-dotenv==1.1.0       # .env 环境变量加载
+
+# ── 脚本兼容（现有 scripts/ 代码的依赖）──
+requests==2.32.4           # scripts/ 大部分模块使用
+pyyaml==6.0.2              # config.yaml 解析
+python-multipart==0.0.21   # 文件上传支持
+
+# ── 可选：AI 接口 ──
+# openai==1.102.0           # 如需直接调用 OpenAI API 可取消注释
+
+# ── 开发工具 ──
+# pytest==8.4.2             # 测试（按需安装）

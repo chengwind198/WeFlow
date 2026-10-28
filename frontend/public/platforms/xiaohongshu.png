@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<Error>
+	<Code>NoSuchKey</Code>
+	<Message>The specified key does not exist.</Message>
+	<Resource>/fe-platform/favicon.ico</Resource>
+	<RequestId>NmE3NWZlNThfYmNlY2JlMDlfMTBjNDlfYzhlYjBhZg==</RequestId>
+	<TraceId>OGVmYzZiMmQzYjA2OWNhODk0NTRkMTBiOWVmMDAxODc0OWRkZjk0ZDM1NmI1M2E2MTRlY2MzZDhmNmI5MWI1OWRlZDk5YzgyOTg0ZTg2ODA1ODFjOGY0MWFhYWFhOTdmNWE2NDk4OWEwMTFkYjFiYjA2MTIyNjA3NGNhNzlhYTc=</TraceId>
+</Error>
+

@@ -1,0 +1,77 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# Logs
+scripts/logs/
+
+# Credentials
+.env
+.env.local
+.env.backup
+accounts.yaml
+# config*.yaml 覆盖 config.yaml 及其日期备份(如 config_20260808.yaml);
+# 只写 config.yaml 会让备份文件被 git add . 意外带入
+config*.yaml
+**/.token_cache*
+**/.uploaded_manifest.json
+# 开源前审计清单本身记录了漏洞位置与密钥指纹,不随仓库公开
+OPEN-SOURCE-AUDIT.md
+# AI 工具的本地命令白名单:换机器或个人全局 ignore 缺失时会被 git add . 带走
+.claude/
+
+# 内部过程性设计/分析文档:开源只上传产品介绍(features/product-intro),这些不上公开仓库。
+# 用忽略而不是删除:本地全部保留,方案 A 的新仓库 git add . 时自然跳过。
+/workflow.md
+/DESIGN.md
+/docs/DESIGN.md
+/docs/analysis.md
+# 已完成的需求待办、AI 工具记忆文件、调试残留:对读者无价值,不上传
+/tasklist.md
+/MEMORY.md
+/debug_wait.py
+# 与本项目无关的文章草稿样本;若要当示例展示,请改名放进 examples/ 后取消忽略
+/mistake.md
+
+# 文档收口:公开仓库只保留根目录 README(产品介绍+部署流程)与运行时文档。
+# 以下三份产品介绍内容重叠,合并进 README 后不再单独上传(本地保留)
+/docs/features.md
+/docs/product-intro.md
+/docs/product-intro-simple.md
+# Vite 脚手架自动生成的英文模板,与本项目无关
+/frontend/README.md
+
+# Temp files
+/tmp/
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated articles — everything is a runtime output, only README survives in git
+article.md
+article.html
+article_preview.html
+generated/*
+!generated/README.md
+# 运行产物备份(文章/贴图归档目录,同 generated/* 哲学,不入库)
+mp-articles/
+
+# IDE / Harness state
+.vscode/
+.idea/
+.gstack/
+.omc/
+.omx/
+mp-articles/
+/frontend/node_modules
+node_modules
+logs
+generated
+
+backend/engine/db/weflow.*
