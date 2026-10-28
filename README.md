@@ -8,7 +8,7 @@ WeFlow 是一个本地运行的微信公众号创作工作台：后端 FastAPI +
 
 ![AI 一言成文](assets/readme/ai-article.webp)
 
-> 截图中的账号、作者和文章均为演示数据；App ID、本地路径与素材 ID 已做掩码处理。
+> 截图取自真实运行环境，账号名、作者与文章标题均为实际数据；App ID、API Key、同步 Token、本地路径与素材 ID 已在界面或截图时掩码。
 
 ## 目录
 
@@ -692,7 +692,7 @@ integrations:
 
 - `config.yaml`、`.env`、`accounts.yaml`、数据库文件、日志和生成产物都已在 `.gitignore` 中排除。
 - Web 界面会对 `app_secret`、`api_key`、`wechatsync_mcp_token` 做脱敏展示；保存时保留未修改的真实值。
-- 截图和示例配置中的 App ID / AppSecret / API Key 均为占位符，请勿替换成真实值后提交。
+- 示例配置 `config.yaml.example` 中的 App ID / AppSecret / API Key 全部是占位符；README 截图里的密钥字段是真实值的掩码显示（圆点或"已隐藏"）。请勿把真实凭证提交进版本库。
 
 ## 使用示例
 
