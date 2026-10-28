@@ -50,8 +50,6 @@ def test_unified_config_reads_wechat_publisher_yaml(tmp_path, monkeypatch):
             app_secret: "unified_secret"
             author: "作者A"
             theme: "refined-blue"
-        image_generation:
-          generator: "baoyu-danger-gemini-web"
     """), encoding="utf-8")
 
     import config
@@ -61,20 +59,20 @@ def test_unified_config_reads_wechat_publisher_yaml(tmp_path, monkeypatch):
     cfg = config.get_config()
     assert cfg["account_key"] == "main"
     assert cfg["app_id"] == "wx_unified"
-    assert cfg["image_generator"] == "baoyu-danger-gemini-web"
+    assert cfg["theme"] == "refined-blue"
 
 
 def test_load_env_reads_unified_image_and_integration_config(tmp_path, monkeypatch):
     """load_env() should export unified YAML settings as process env fallbacks."""
     for key in (
-        "WECHATSYNC_MCP_TOKEN",
+        "WECHATSYNC_TOKEN",
         "OPENAI_API_KEY",
         "OPENAI_BASE_URL",
         "OPENAI_IMAGE_MODEL",
         "GEMINI_PROXY_API_KEY",
         "GEMINI_PROXY_BASE_URL",
         "GEMINI_PROXY_IMAGE_MODEL",
-        "WECHAT_PUBLISHER_IMAGE_GENERATOR",
+        "WECHAT_PUBLISHER_IMAGE_PROVIDER",
     ):
         monkeypatch.delenv(key, raising=False)
 
@@ -88,7 +86,7 @@ def test_load_env_reads_unified_image_and_integration_config(tmp_path, monkeypat
             app_secret: "unified_secret"
             author: "作者A"
         image_generation:
-          generator: "baoyu-image-gen"
+          provider: "z_image_turbo_bailian"
           openai:
             api_key: "sk_openai"
             base_url: "https://api.example/v1"
@@ -105,10 +103,10 @@ def test_load_env_reads_unified_image_and_integration_config(tmp_path, monkeypat
 
     monkeypatch.setattr(config, "_config_path", lambda: yaml_path)
     config.load_env()
-    assert config.os.environ["WECHAT_PUBLISHER_IMAGE_GENERATOR"] == "baoyu-image-gen"
+    assert config.os.environ["WECHAT_PUBLISHER_IMAGE_PROVIDER"] == "z_image_turbo_bailian"
     assert config.os.environ["OPENAI_API_KEY"] == "sk_openai"
     assert config.os.environ["GEMINI_PROXY_BASE_URL"] == "https://proxy.example"
-    assert config.os.environ["WECHATSYNC_MCP_TOKEN"] == "sync_token"
+    assert config.os.environ["WECHATSYNC_TOKEN"] == "sync_token"
 
 
 def test_set_account_affects_get_config(tmp_config_yaml):
